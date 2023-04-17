@@ -27,6 +27,7 @@ import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
+import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 
 export default class DecoupledEditor extends DecoupledEditorBase {
 	public static override builtinPlugins = [
@@ -65,7 +66,8 @@ export default class DecoupledEditor extends DecoupledEditorBase {
 		PictureEditing,
 		Table,
 		TableToolbar,
-		TextTransformation
+		TextTransformation,
+		GeneralHtmlSupport
 	];
 
 	public static override defaultConfig = {
@@ -99,6 +101,16 @@ export default class DecoupledEditor extends DecoupledEditorBase {
 				'|',
 				'undo',
 				'redo'
+			]
+		},
+		htmlSupport: {
+			allow: [
+				{
+					name: 'figure',
+					attributes: {
+						figureId: 'true'
+					}
+				}
 			]
 		},
 		image: {
